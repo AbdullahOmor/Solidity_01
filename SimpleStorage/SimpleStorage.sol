@@ -11,8 +11,10 @@ contract SimpleStorage {
 
     Person[] public listOfPeople; // Dynamic array
 
-    function store(uint256 _favouriteNumber) public {
-        myFavouriteNumber = _favouriteNumber;
+    mapping (string => uint256) public nameToFavouriteNumber; // Mapping key=string and value=uint256
+
+    function store(uint256 _myFavouriteNumber) public {
+        myFavouriteNumber = _myFavouriteNumber;
     }
 
     function retrive() public view returns (uint256){
@@ -21,5 +23,6 @@ contract SimpleStorage {
 
     function addPerson(string memory _name, uint256 _favouriteNumber) public {
         listOfPeople.push(Person(_favouriteNumber, _name));
+        nameToFavouriteNumber[_name] = _favouriteNumber;
     }
 }
