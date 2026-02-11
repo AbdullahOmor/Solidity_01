@@ -56,4 +56,12 @@ contract FundMe {
         that means
         first code then require */
     }
+
+    receive() external payable {
+        fund();
+     }
+
+     fallback() external payable {
+        fund();
+      }
 }
